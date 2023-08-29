@@ -1,6 +1,6 @@
 import React from "react";
-import FilterIcon from "../images/shared/icon-filter.svg";
-import SearchIcon from "../images/shared/icon-search.svg";
+import FilterIcon from "../assets/shared/icon-filter.svg";
+import SearchIcon from "../assets/shared/icon-search.svg";
 import Image from "next/image";
 import { kumbh_sans } from "@/app/layout";
 

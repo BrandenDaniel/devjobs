@@ -1,9 +1,9 @@
 import Image from "next/image";
-import React, { FC } from "react";
+import React from "react";
 
-import Logo from "../images/shared/logo.svg";
-import Sun from "../images/shared/icon-sun.svg";
-import Moon from "../images/shared/icon-moon.svg";
+import Logo from "../assets/shared/logo.svg";
+import Sun from "../assets/shared/icon-sun.svg";
+import Moon from "../assets/shared/icon-moon.svg";
 
 type Props = {
   theme: string;
