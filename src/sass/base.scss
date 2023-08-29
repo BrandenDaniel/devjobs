@@ -1,4 +1,27 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-size: 16px;
+}
+
+:root {
+  --violet: #5964e0;
+  --light-violet: #939bf4;
+  --very-dark-blue-toggle: #fff;
+  --mid-night-toggle: #f4f6f8;
+  --white: #f;
+  --light-grey: #f4f6f8;
+  --grey: #9daec2;
+  --dark-grey: #6e8098;
+  --main-bg: #f4f6f8;
+}
+
+[data-theme="dark"] {
+  --mid-night-toggle: #121721;
+  --very-dark-blue-toggle: #19202d;
+}
+
+main {
+  background: var(--mid-night-toggle);
+  min-height: 100vh;
 }

@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   height: 136px;
-  padding: 0 24px;
+  padding: 0 24px 40px 24px;
 
   &__logo {
     width: 115px;
@@ -20,8 +20,14 @@
 
     input {
       height: 24px;
-      width: 48px;
+      width: 46px;
       position: relative;
+
+      &:checked {
+        &::before {
+          left: 26px;
+        }
+      }
 
       &::before {
         content: "";
@@ -33,14 +39,14 @@
         transform: translateY(-50%);
         height: 16px;
         width: 16px;
-        background: red;
+        background: var(--violet);
         border-radius: 50%;
+        transition: 0.25s ease-in-out;
       }
 
       &::after {
         content: "";
         display: block;
-
         background: #fff;
         position: absolute;
         inset: 0;
@@ -54,8 +60,8 @@
       object-fit: contain;
 
       &:last-child {
-        width: 16px;
-        height: 16px;
+        width: 15px;
+        height: 15px;
       }
     }
   }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
 import "../sass/main.scss";
 
-const kumbh_sans = Kumbh_Sans({ subsets: ["latin"] });
+export const kumbh_sans = Kumbh_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "devjobs | job search",

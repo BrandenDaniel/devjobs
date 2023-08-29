@@ -1,11 +1,23 @@
 import Image from "next/image";
-import React from "react";
+import React, { FC } from "react";
 
 import Logo from "../images/shared/logo.svg";
 import Sun from "../images/shared/icon-sun.svg";
 import Moon from "../images/shared/icon-moon.svg";
 
-const Navbar = () => {
+type Props = {
+  theme: string;
+  setTheme: (newTheme: string) => void;
+};
+
+const Navbar = (props: Props) => {
+  const handleChange = () => {
+    props.setTheme(props.theme === "light" ? "dark" : "light");
+  };
+
+  let body = document.body;
+  body.setAttribute("data-theme", props.theme);
+
   return (
     <nav className="nav">
       <a href="/" className="nav__logo">
@@ -14,7 +26,7 @@ const Navbar = () => {
 
       <div className="nav__theme-toggle">
         <Image src={Sun} alt="" />
-        <input type="checkbox" />
+        <input type="checkbox" onChange={handleChange} />
         <Image src={Moon} alt="" />
       </div>
     </nav>

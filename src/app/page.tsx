@@ -1,10 +1,16 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
-import React from "react";
+import SearchFilter from "@/components/SearchFilter";
+import React, { useState } from "react";
 
 const page = () => {
+  const [theme, setTheme] = useState<string>("light");
+
   return (
     <main>
-      <Navbar />
+      <Navbar theme={theme} setTheme={setTheme} />
+      <SearchFilter />
     </main>
   );
 };
