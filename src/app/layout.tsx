@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
-import "../sass/main.scss";
 
 export const kumbh_sans = Kumbh_Sans({ subsets: ["latin"] });
 

@@ -1,13 +1,20 @@
 .nav {
   background-image: url("../assets/mobile/bg-pattern-header.svg");
   background-size: cover;
-  background-position: bottom;
+  background-position: bottom left;
   background-repeat: no-repeat;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 136px;
+  display: flex;
+  align-items: center;
   padding: 0 24px 40px 24px;
+  &__inner {
+    max-width: 1110px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &__logo {
     width: 115px;
@@ -16,7 +23,7 @@
   &__theme-toggle {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 
     input {
       height: 24px;
@@ -68,5 +75,19 @@
         height: 15px;
       }
     }
+  }
+}
+
+@media (min-width: $md) {
+  .nav {
+    background-image: url("../assets/tablet/bg-pattern-header.svg");
+    height: 160px;
+    padding: 0 39px 40px 39px;
+  }
+}
+
+@media (min-width: $lg) {
+  .nav {
+    background-image: url("../assets/desktop/bg-pattern-header.svg");
   }
 }

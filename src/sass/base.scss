@@ -2,21 +2,31 @@
   margin: 0;
   box-sizing: border-box;
   font-size: 16px;
+  font-family: inherit;
 }
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
 
 :root {
   --violet: #5964e0;
   --light-violet: #939bf4;
+  --very-dark-blue: #19202d;
   --very-dark-blue-toggle: #fff;
   --mid-night-toggle: #f4f6f8;
-  --white: #f;
+  --white: #fff;
   --light-grey: #f4f6f8;
   --grey: #9daec2;
   --dark-grey: #6e8098;
   --main-bg: #f4f6f8;
+  --body: #19202d;
 }
 
 [data-theme="dark"] {
+  --body: #fff;
   --mid-night-toggle: #121721;
   --very-dark-blue-toggle: #19202d;
 }
@@ -24,4 +34,20 @@
 main {
   background: var(--mid-night-toggle);
   min-height: 100vh;
+}
+
+button {
+  border: none;
+  padding: 0;
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (min-width: $lg) {
+    &:hover {
+      background: var(--light-violet) !important;
+    }
+  }
 }
