@@ -9,7 +9,7 @@ import { kumbh_sans } from "@/app/layout";
 import jobData from "../data/data.json";
 import JobDetail from "@/components/JobDetail";
 
-const page = () => {
+const Page = () => {
   const [theme, setTheme] = useState("light");
   const [titleQuery, setTitleQuery] = useState("");
   const [locationQuery, setLocationQuery] = useState("");
@@ -49,7 +49,7 @@ const page = () => {
             }
           }
         })}
-        <p className="no-job">The job you're looking for does not exist.</p>
+        <p className="no-job">{`Can't find the job you're looking for.`}</p>
         <div className="loadMore">
           <button className={kumbh_sans.className}>Load More</button>
         </div>
@@ -60,4 +60,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
