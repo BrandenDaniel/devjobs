@@ -17,7 +17,7 @@ type Props = {
 const JobCard = (props: Props) => {
   return (
     <>
-      <div className="jobCard" key={props.key}>
+      <button className="jobCard" key={props.key}>
         <div className="jobCard__inner">
           <Image
             src={props.logo}
@@ -34,7 +34,7 @@ const JobCard = (props: Props) => {
           <p className="jobCard__company">{props.company}</p>
           <p className="jobCard__location">{props.location}</p>
         </div>
-      </div>
+      </button>
     </>
   );
 };

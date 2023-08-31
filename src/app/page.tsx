@@ -7,6 +7,7 @@ import SearchFilter from "@/components/SearchFilter";
 import React, { useState } from "react";
 import { kumbh_sans } from "@/app/layout";
 import jobData from "../data/data.json";
+import JobDetail from "@/components/JobDetail";
 
 const page = () => {
   const [theme, setTheme] = useState("light");
@@ -52,6 +53,8 @@ const page = () => {
         <div className="loadMore">
           <button className={kumbh_sans.className}>Load More</button>
         </div>
+
+        <JobDetail />
       </div>
     </main>
   );

@@ -28,6 +28,12 @@
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
+  text-align: left;
+  transition: none;
+
+  &:hover {
+    background: var(--very-dark-blue-toggle) !important;
+  }
 
   img {
     height: 50px;
