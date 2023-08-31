@@ -6,6 +6,19 @@
   max-width: 1110px;
   box-sizing: content-box;
   margin: 0 auto;
+
+  &:has(.jobCard) {
+    .no-job {
+      display: none;
+    }
+  }
+}
+
+.no-job {
+  display: block;
+  grid-column: 1/4;
+  text-align: center;
+  color: var(--body);
 }
 
 .jobCard {

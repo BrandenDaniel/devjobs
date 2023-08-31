@@ -31,6 +31,10 @@
         color: var(--body);
         opacity: 0.5;
       }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
