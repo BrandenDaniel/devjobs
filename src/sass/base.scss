@@ -69,19 +69,6 @@ button {
   overflow: auto;
   align-items: flex-start;
 
-  // &::-webkit-scrollbar {
-  //   width: 0 !important;
-  // }
-
-  &:has(.jobCard) {
-    .no-job {
-      display: none;
-    }
-    .loadMore {
-      display: block;
-    }
-  }
-
   &:has(.jobDetail--opened) {
     overflow: hidden;
     .jobCard {

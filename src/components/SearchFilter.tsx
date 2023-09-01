@@ -63,6 +63,9 @@ const SearchFilter = (props: Props) => {
     jobTypeCheck && props.setIsFullTime(jobTypeCheck.checked);
     locationInputMobile && props.setLocationQuery(locationInputMobile.value);
     jobTypeCheckMobile && props.setIsFullTime(jobTypeCheckMobile.checked);
+
+    const container = document.querySelector(".container");
+    container && (container.scrollTop = 0);
   };
 
   const handleMobileFilter = (e: React.MouseEvent<HTMLButtonElement>) => {

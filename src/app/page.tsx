@@ -36,6 +36,18 @@ const Page = () => {
     },
   });
 
+  const [displayLimit, setDisplayLimit] = useState(9);
+
+  const filteredJobs = jobData.filter((job) => {
+    return (
+      job.position.toLowerCase().includes(titleQuery.toLowerCase()) &&
+      job.location.toLowerCase().includes(locationQuery.toLowerCase()) &&
+      (isFullTime ? job.contract === "Full Time" : true)
+    );
+  });
+
+  const searchCount = filteredJobs.length;
+
   return (
     <main>
       <Navbar theme={theme} setTheme={setTheme} />
@@ -50,41 +62,43 @@ const Page = () => {
       />
 
       <div className="container">
-        {jobData.map((job) => {
-          if (
-            job.position.toLowerCase().includes(titleQuery.toLowerCase()) &&
-            job.location.toLowerCase().includes(locationQuery.toLowerCase())
-          ) {
-            if (isFullTime ? job.contract === "Full Time" : job.contract) {
-              return (
-                <JobCard
-                  key={job.id}
-                  id={job.id}
-                  postedAt={job.postedAt}
-                  contract={job.contract}
-                  position={job.position}
-                  company={job.company}
-                  location={job.location}
-                  logoBg={job.logoBackground}
-                  logo={job.logo}
-                  website={job.website}
-                  apply={job.apply}
-                  description={job.description}
-                  requirements={job.requirements}
-                  role={job.role}
-                  setIsModalActive={setIsModalActive}
-                  currentJobDetail={currentJobDetail}
-                  setCurrentJobDetail={setCurrentJobDetail}
-                />
-              );
-            }
+        {filteredJobs.map((job, index) => {
+          if (index < displayLimit) {
+            return (
+              <JobCard
+                key={job.id}
+                id={job.id}
+                postedAt={job.postedAt}
+                contract={job.contract}
+                position={job.position}
+                company={job.company}
+                location={job.location}
+                logoBg={job.logoBackground}
+                logo={job.logo}
+                website={job.website}
+                apply={job.apply}
+                description={job.description}
+                requirements={job.requirements}
+                role={job.role}
+                setIsModalActive={setIsModalActive}
+                currentJobDetail={currentJobDetail}
+                setCurrentJobDetail={setCurrentJobDetail}
+              />
+            );
           }
         })}
-        <p className="no-job">{`We can't find the job you're looking for.`}</p>
 
-        {/* <div className="loadMore">
-            <button>Load More</button>
-          </div> */}
+        {searchCount === 0 && (
+          <p className="no-job">{`We can't find the job you're looking for.`}</p>
+        )}
+
+        {searchCount > displayLimit && (
+          <div className="loadMore">
+            <button onClick={() => setDisplayLimit((prev) => prev * 2)}>
+              Load More
+            </button>
+          </div>
+        )}
 
         <JobDetail
           isModalActive={isModalActive}
