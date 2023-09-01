@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Kumbh_Sans } from "next/font/google";
 
-export const kumbh_sans = Kumbh_Sans({ subsets: ["latin"] });
+const kumbh_sans = Kumbh_Sans({ subsets: ["latin"] });
 
 const metadata: Metadata = {
   title: "devjobs | job search",

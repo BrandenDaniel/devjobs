@@ -5,7 +5,6 @@ import JobCard from "@/components/JobCard";
 import Navbar from "@/components/Navbar";
 import SearchFilter from "@/components/SearchFilter";
 import React, { useState } from "react";
-import { kumbh_sans } from "@/app/layout";
 import jobData from "../data/data.json";
 import JobDetail from "@/components/JobDetail";
 
@@ -39,7 +38,7 @@ const Page = () => {
   const [loadMore, setLoadMore] = useState(9);
 
   return (
-    <main className={kumbh_sans.className}>
+    <main>
       <Navbar theme={theme} setTheme={setTheme} />
       <SearchFilter
         titleQuery={titleQuery}
@@ -88,7 +87,7 @@ const Page = () => {
 
         {jobData.length > loadMore && (
           <div className="loadMore" onClick={() => setLoadMore(loadMore * 2)}>
-            <button className={kumbh_sans.className}>Load More</button>
+            <button>Load More</button>
           </div>
         )}
 
