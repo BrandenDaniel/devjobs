@@ -40,7 +40,8 @@ const Page = () => {
 
   const filteredJobs = jobData.filter((job) => {
     return (
-      job.position.toLowerCase().includes(titleQuery.toLowerCase()) &&
+      (job.position.toLowerCase().includes(titleQuery.toLowerCase()) ||
+        job.company.toLowerCase().includes(titleQuery.toLowerCase())) &&
       job.location.toLowerCase().includes(locationQuery.toLowerCase()) &&
       (isFullTime ? job.contract === "Full Time" : true)
     );
