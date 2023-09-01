@@ -35,7 +35,6 @@ const Page = () => {
       items: [],
     },
   });
-  const [loadMore, setLoadMore] = useState(9);
 
   return (
     <main>
@@ -51,45 +50,41 @@ const Page = () => {
       />
 
       <div className="container">
-        {jobData.map((job, index) => {
+        {jobData.map((job) => {
           if (
             job.position.toLowerCase().includes(titleQuery.toLowerCase()) &&
             job.location.toLowerCase().includes(locationQuery.toLowerCase())
           ) {
             if (isFullTime ? job.contract === "Full Time" : job.contract) {
-              if (loadMore > index) {
-                return (
-                  <JobCard
-                    key={job.id}
-                    id={job.id}
-                    postedAt={job.postedAt}
-                    contract={job.contract}
-                    position={job.position}
-                    company={job.company}
-                    location={job.location}
-                    logoBg={job.logoBackground}
-                    logo={job.logo}
-                    website={job.website}
-                    apply={job.apply}
-                    description={job.description}
-                    requirements={job.requirements}
-                    role={job.role}
-                    setIsModalActive={setIsModalActive}
-                    currentJobDetail={currentJobDetail}
-                    setCurrentJobDetail={setCurrentJobDetail}
-                  />
-                );
-              }
+              return (
+                <JobCard
+                  key={job.id}
+                  id={job.id}
+                  postedAt={job.postedAt}
+                  contract={job.contract}
+                  position={job.position}
+                  company={job.company}
+                  location={job.location}
+                  logoBg={job.logoBackground}
+                  logo={job.logo}
+                  website={job.website}
+                  apply={job.apply}
+                  description={job.description}
+                  requirements={job.requirements}
+                  role={job.role}
+                  setIsModalActive={setIsModalActive}
+                  currentJobDetail={currentJobDetail}
+                  setCurrentJobDetail={setCurrentJobDetail}
+                />
+              );
             }
           }
         })}
         <p className="no-job">{`We can't find the job you're looking for.`}</p>
 
-        {jobData.length > loadMore && (
-          <div className="loadMore" onClick={() => setLoadMore(loadMore * 2)}>
+        {/* <div className="loadMore">
             <button>Load More</button>
-          </div>
-        )}
+          </div> */}
 
         <JobDetail
           isModalActive={isModalActive}
