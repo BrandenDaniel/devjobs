@@ -5,8 +5,6 @@ import FilterIcon from "../assets/shared/icon-filter.svg";
 import SearchIcon from "../assets/shared/icon-search.svg";
 import Image from "next/image";
 
-let sizeOnLoad: number = window.innerWidth;
-
 type Props = {
   titleQuery: string;
   setTitleQuery: (query: string) => void;
@@ -18,13 +16,25 @@ type Props = {
 };
 
 const SearchFilter = (props: Props) => {
-  const [windowSize, setWindowSize] = useState<number>(sizeOnLoad);
+  const [windowSize, setWindowSize] = useState<number>(0);
+
   useEffect(() => {
-    sizeOnLoad = window.innerWidth;
-    window.addEventListener("resize", () => {
+    // Check if window is available (client-side) before accessing window.innerWidth
+    if (typeof window !== "undefined") {
       setWindowSize(window.innerWidth);
-    });
-  }, [windowSize]);
+
+      const handleResize = () => {
+        setWindowSize(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup the event listener on unmount
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
