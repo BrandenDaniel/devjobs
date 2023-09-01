@@ -9,7 +9,7 @@ import jobData from "../data/data.json";
 import JobDetail from "@/components/JobDetail";
 
 const Page = () => {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [titleQuery, setTitleQuery] = useState("");
   const [locationQuery, setLocationQuery] = useState("");
   const [isFullTime, setIsFullTime] = useState(false);

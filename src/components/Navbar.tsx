@@ -31,7 +31,11 @@ const Navbar = (props: Props) => {
 
         <div className="nav__theme-toggle">
           <Image src={Sun} alt="" />
-          <input type="checkbox" onChange={handleChange} />
+          <input
+            type="checkbox"
+            onChange={handleChange}
+            checked={props.theme === "dark" ? true : false}
+          />
           <Image src={Moon} alt="" />
         </div>
       </div>

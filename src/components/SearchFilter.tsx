@@ -113,7 +113,12 @@ const SearchFilter = (props: Props) => {
 
       {windowSize < 768 && (
         <>
-          <button className="SearchFilter__filter" onClick={handleMobileFilter}>
+          <button
+            className="SearchFilter__filter"
+            onClick={handleMobileFilter}
+            tabIndex={-1}
+            type="button"
+          >
             <Image src={FilterIcon} alt="Filter" />
           </button>
 
