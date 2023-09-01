@@ -8,6 +8,14 @@
   background: var(--very-dark-blue-toggle);
   max-width: 400px;
   width: calc(100% - 24px * 2);
+  opacity: 1;
+  pointer-events: all;
+  transition: 0.3s ease-in-out;
+
+  &--hide {
+    opacity: 0;
+    pointer-events: none;
+  }
 
   &__input-container {
     display: flex;
@@ -55,6 +63,86 @@
 
   &__filter {
     background: none;
+
+    &-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0 24px;
+      align-items: center;
+      z-index: 2;
+      display: none;
+
+      &--open {
+        display: flex !important;
+      }
+
+      &-content {
+        background: var(--very-dark-blue-toggle);
+        width: 100%;
+        border-radius: 6px;
+      }
+
+      &-input {
+        padding: 24px;
+        border-bottom: 1px solid rgba(110, 128, 152, 0.2);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        &::before {
+          content: "";
+          display: block;
+          background-image: url("../assets/shared/icon-location.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          height: 24px;
+          width: 17px;
+        }
+
+        input {
+          background: transparent;
+          border: none;
+          color: var(--body);
+          padding: 0;
+
+          &::placeholder {
+            color: var(--body);
+            opacity: 0.4;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      &-search {
+        padding: 24px;
+
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+
+          label {
+            color: var(--body);
+            font-weight: 700;
+          }
+        }
+
+        button {
+          margin-top: 24px;
+          font-weight: 700;
+          color: #fff;
+          background: var(--violet);
+          width: 100%;
+          padding: 16px 0;
+          border-radius: 5px;
+        }
+      }
+    }
   }
 
   &__search {
@@ -86,10 +174,6 @@
         flex-grow: 1;
         flex-basis: 0;
       }
-    }
-
-    &__filter {
-      display: none !important;
     }
 
     &__location,
@@ -147,26 +231,6 @@
 
       *:hover {
         cursor: pointer;
-      }
-
-      input {
-        background-color: var(--body);
-        opacity: 0.1;
-        height: 24px;
-        width: 24px;
-        border-radius: 3px;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-
-        &:checked {
-          background-color: var(--violet);
-          opacity: 1;
-          background-image: url("../assets/desktop/icon-check.svg");
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: 14px;
-        }
       }
 
       label {

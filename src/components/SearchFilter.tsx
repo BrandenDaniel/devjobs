@@ -14,6 +14,7 @@ type Props = {
   setLocationQuery: (query: string) => void;
   isFullTime: boolean;
   setIsFullTime: (arg: boolean) => void;
+  isModalActive: boolean;
 };
 
 const SearchFilter = (props: Props) => {
@@ -39,12 +40,40 @@ const SearchFilter = (props: Props) => {
       'input[name="jobType"]'
     ) as HTMLInputElement | null;
 
+    const locationInputMobile = e.currentTarget.querySelector(
+      'input[name="locationMobile"]'
+    ) as HTMLInputElement | null;
+
+    const jobTypeCheckMobile = e.currentTarget.querySelector(
+      'input[name="jobTypeMobile"]'
+    ) as HTMLInputElement | null;
+
     titleInput && props.setTitleQuery(titleInput.value);
     locationInput && props.setLocationQuery(locationInput.value);
     jobTypeCheck && props.setIsFullTime(jobTypeCheck.checked);
+    locationInputMobile && props.setLocationQuery(locationInputMobile.value);
+    jobTypeCheckMobile && props.setIsFullTime(jobTypeCheckMobile.checked);
   };
+
+  const handleMobileFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    document
+      .querySelector(".SearchFilter__filter-modal")
+      ?.classList.add("SearchFilter__filter-modal--open");
+  };
+
+  const closeFilterModal = () => {
+    document
+      .querySelector(".SearchFilter__filter-modal")
+      ?.classList.remove("SearchFilter__filter-modal--open");
+  };
+
   return (
-    <form className="SearchFilter" onSubmit={handleSubmit}>
+    <form
+      className={`SearchFilter ${props.isModalActive && "SearchFilter--hide"}`}
+      onSubmit={handleSubmit}
+    >
       <div className="SearchFilter__input-container">
         <div className="SearchFilter__title">
           <input
@@ -65,21 +94,52 @@ const SearchFilter = (props: Props) => {
           />
         </div>
         <div className="SearchFilter__job-type">
-          <input
-            type="checkbox"
-            name="jobType"
-            id="jobType"
-            // checked={props.isFullTime ? true : false}
-          />
+          <input type="checkbox" name="jobType" id="jobType" />
           <label htmlFor="jobType">
             Full Time{windowSize > 1200 ? " Only" : null}
           </label>
         </div>
       </div>
 
-      <button className="SearchFilter__filter">
-        <Image src={FilterIcon} alt="Filter" />
-      </button>
+      {windowSize < 768 && (
+        <>
+          <button className="SearchFilter__filter" onClick={handleMobileFilter}>
+            <Image src={FilterIcon} alt="Filter" />
+          </button>
+
+          <div
+            className="SearchFilter__filter-modal"
+            onClick={closeFilterModal}
+          >
+            <div
+              className="SearchFilter__filter-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="SearchFilter__filter-modal-input">
+                <input
+                  type="text"
+                  name="locationMobile"
+                  placeholder="Filter by location…"
+                />
+              </div>
+              <div className="SearchFilter__filter-modal-search">
+                <div>
+                  <input
+                    type="checkbox"
+                    name="jobTypeMobile"
+                    id="jobTypeMobile"
+                  />
+                  <label htmlFor="jobTypeMobile">Full Time Only</label>
+                </div>
+                <button type="submit" onClick={closeFilterModal}>
+                  Search
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
       <button className="SearchFilter__search" type="submit">
         {windowSize < 768 ? <Image src={SearchIcon} alt="Search" /> : "Search"}
       </button>
