@@ -12,7 +12,10 @@ type Props = {
 
 const JobDetail = (props: Props) => {
   return (
-    <div className={`jobDetail ${props.isModalActive && "jobDetail--opened"}`}>
+    <div
+      className={`jobDetail ${props.isModalActive && "jobDetail--opened"}`}
+      id="modal"
+    >
       <header className="jobDetail__header">
         <Image
           className="jobDetail__header-logo"

@@ -13,14 +13,17 @@
   width: 100%;
   margin: 0 auto;
   text-align: left;
-  transition: none;
-  transition: 0.2s ease-in-out;
+  // transition: 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
   height: 100%;
   &:hover {
     background: var(--very-dark-blue-toggle) !important;
     outline: 1px solid var(--body);
+
+    img {
+      outline: 1px solid var(--body);
+    }
   }
 
   img {
@@ -92,12 +95,6 @@
 }
 
 @media (min-width: $md) {
-  .container {
-    padding: 70px 39px 62px 39px;
-    grid-template-columns: 1fr 1fr;
-    gap: 65px 11px;
-  }
-
   .jobCard {
     max-width: 100%;
   }
@@ -109,12 +106,6 @@
 }
 
 @media (min-width: $lg) {
-  .container {
-    padding: 105px 39px 62px 39px;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 65px 30px;
-  }
-
   .loadMore {
     margin-top: -9px;
     grid-column: 1/4;
