@@ -83,11 +83,11 @@ button {
   }
 
   @media (min-width: $lg) {
-    padding: 27px 39px 62px 39px;
-    margin: 50px auto 0 auto;
+    padding: 27px 39px 0 39px;
+    margin: 50px auto 62px auto;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 65px 30px;
-    height: calc(100dvh - 40px - 208px);
+    height: calc(100dvh - 40px - 208px - 62px);
 
     &::-webkit-scrollbar {
       width: 8px !important;
